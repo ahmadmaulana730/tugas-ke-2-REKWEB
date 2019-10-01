@@ -1,10 +1,11 @@
 <?php
 
+
 interface InfoProduk
 {
     public function getInfoProduk();
 }
-class produk
+abstract class produk
 {
     protected $judul,
         $penulis,
@@ -72,9 +73,8 @@ class produk
         return $this->harga - ($this->harga * $this->diskon / 100);
     }
 
-    abstract public function getInfo();
 
-
+    abstract  public function getInfo();
 
 
     public function getLabel()
@@ -108,6 +108,7 @@ class Komik extends produk implements InfoProduk
 
         return $str;
     }
+
     public function getInfoProduk()
 
     {
@@ -141,6 +142,7 @@ class Game extends produk implements InfoProduk
 
         return $str;
     }
+
     public function getInfoProduk()
 
     {
@@ -170,12 +172,12 @@ class CetakInfoProduk
 // $produk2 = new produk();
 
 
-// $produk1 = new Komik("Naruto", "Masshi Kishimoto", "Shoen Jump", 3000, 100);
-// $produk2 = new Game("Uncharted", "Neil Druckmann", "Sony Computer", 25000,  50);
+$produk1 = new Komik("Naruto", "Masshi Kishimoto", "Shoen Jump", 3000, 100);
+$produk2 = new Game("Uncharted", "Neil Druckmann", "Sony Computer", 25000,  50);
 
-// $cetakProduk = new CetakInfoProduk();
-// $cetakProduk->tambahProduk($produk1);
-// $cetakProduk->tambahProduk($produk2);
-// echo $cetakProduk->cetak();
+$cetakProduk = new CetakInfoProduk();
+$cetakProduk->tambahProduk($produk1);
+$cetakProduk->tambahProduk($produk2);
+echo $cetakProduk->cetak();
 
-$tes = new produk();
+// $tes = new Produk();
